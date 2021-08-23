@@ -1,3 +1,3 @@
-module github.com/i0Ek3/i0utils
+module github.com/i0Ek3/glib
 
 go 1.16
