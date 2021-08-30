@@ -42,7 +42,9 @@ func main() {
     tr.B2S(/*byte*/'h')
 
     // for math
-    mx.Max(1, 2, 3, 4, 5)
+    mx.MaxFromNumbers(1, 2, 3, 4, 5) // 5
+    mx.Max(1, 2) // 2
+    mx.Abs(-1) // 1
 
     // for set
     set.NewSet(1, 2, 3)
