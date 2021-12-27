@@ -30,7 +30,7 @@ func main() {
     fmt.Println("%.2fs elapsed\n", elapsed)
 }
 
-func reading(url, defa string, ch chan string) {
+func reading(url, defa string, ch chan<- string) {
     if url == "" {
         f, err := os.Open(defa)
         defer f.Close()
@@ -55,7 +55,6 @@ func reading(url, defa string, ch chan string) {
         }
     }
     go fetch(url, ch)
-
 }
 
 func fetch(url string, ch chan<- string) {
