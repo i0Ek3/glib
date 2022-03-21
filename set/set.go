@@ -12,8 +12,8 @@ type (
 
 // Set defines a set struct which made of map
 type Set struct {
+    sync.RWMutex
     set  map[T]K
-    lock sync.RWMutex
 }
 
 // NewSet creates a set and add vals to this set
@@ -27,9 +27,9 @@ func NewSet(vals ...T) *Set {
 // Add adds given values into set
 func (s *Set) Add(vals ...T) {
     for _, v := range vals {
-        s.lock.Lock()
+        s.Lock()
         s.set[v] = K{}
-        s.lock.Unlock()
+        s.Unlock()
     }
 }
 
