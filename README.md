@@ -6,11 +6,11 @@
 
 ## Content
 
-- minit
+- pool
 - math
 - set
+- pattern
 - transfer
-
 
 ## Getting Started
 
@@ -18,12 +18,11 @@
 
 `go get github.com/i0Ek3/glib`
 
-
 ### Usage
 
 ```Go
 import (
-    mi "github.com/i0Ek3/glib/minit"
+    "github.com/i0Ek3/glib/pool"
     tr "github.com/i0Ek3/glib/transfer"
     mx "github.com/i0Ek3/glib/math"
     set "github.com/i0Ek3/glib/set"
@@ -31,10 +30,6 @@ import (
 )
 
 func main() {
-    // for minit
-    m := make(map[int]int) // TODO: Apply Go generic
-    mi.Minit(m)
-
     // for transfer
     tr.I2B(/*int value*/1)
     tr.B2I(/*bool value*/true)
@@ -53,18 +48,17 @@ func main() {
     set.Clear()
     set.Query(2)
     set.GetSize()
-}
 
+    // for pool
+    pool := New(4)
+    pool.NewTask(task) // var task func()
+} 
 ```
-
-
 
 ## Contributing
 
 PRs and Issues are also welcome.
 
-
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-

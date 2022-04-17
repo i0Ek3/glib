@@ -12,7 +12,7 @@ type (
 
 // Set defines a set struct which made of map
 type Set struct {
-    sync.RWMutex
+    sync.Mutex
     set  map[T]K
 }
 
