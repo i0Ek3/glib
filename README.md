@@ -6,6 +6,9 @@
 
 ## Content
 
+- lock
+  - ReentrantLock
+
 - pool
 - math
 - set
@@ -20,13 +23,17 @@
 
 ### Usage
 
+Please check example.
+
 ```Go
 import (
     "github.com/i0Ek3/glib/pool"
     tr "github.com/i0Ek3/glib/transfer"
     mx "github.com/i0Ek3/glib/math"
     set "github.com/i0Ek3/glib/set"
-    ...
+  	l "github.com/i0Ek3/glib/lock"
+  
+    //...
 )
 
 func main() {
@@ -52,6 +59,18 @@ func main() {
     // for pool
     pool := New(4)
     pool.NewTask(task) // var task func()
+  
+  	// for lock
+    // lock by goroutine id
+    id := goid.Get()
+    l.LockByID(id)
+  	l.LockByID(id)
+  	l.UnlockByID(id)
+  
+  	// lock by token
+    l.LockByToken(token)
+  	l.LockByToken(token)
+  	l.UnlockByToken(token)
 } 
 ```
 
