@@ -81,3 +81,7 @@ PRs and Issues are also welcome.
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## Credit
+
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)](https://jb.gg/OpenSourceSupport)
