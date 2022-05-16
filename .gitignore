@@ -1,2 +1,3 @@
 .DS_Store
 net/fetch
+sema/semaphore_test.go
