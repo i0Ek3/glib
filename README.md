@@ -1,29 +1,25 @@
-<h1 align="center">glib👋</h1>
-<p>
-</p>
 
-> glib: A lots of Go utils for myself.
+# glib
 
-## Content
+`glib` is a series of small libraries written in Golang, designed to help developers focus their development work on more noteworthy areas. You can use the libraries in glib to help you develop faster in your projects, welcome to try.
 
-- lock
-  - ReentrantLock
 
-- pool
-- math
-- set
-- pattern
-- transfer
+## Features
 
-## Getting Started
+- Support ReentrantLock
+- Support thread-safe Set
+- Support Mutex/Once version Singleton
+- Support type transfer
+- Support math operation
 
-### Installation
+## Install
 
-`go get github.com/i0Ek3/glib`
+```Go
+go get -u github.com/i0Ek3/glib
+```
 
-### Usage
 
-Please check example.
+## Usage/Examples
 
 ```Go
 import (
@@ -56,9 +52,9 @@ func main() {
     set.Query(2)
     set.GetSize()
 
-    // for pool
-    pool := New(4)
-    pool.NewTask(task) // var task func()
+    // for pool
+    pool := New(4)
+    pool.NewTask(task) // var task func()
   
   	// for lock
     // lock by goroutine id
@@ -74,14 +70,22 @@ func main() {
 } 
 ```
 
+
 ## Contributing
 
-PRs and Issues are also welcome.
+Contributions are always welcome!
 
-## Show your support
+## Support
 
-Give a ⭐️ if this project helped you!
+For support, email i0Ek3@protonmail.ch.
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
 
 ## Credit
 
-[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)](https://jb.gg/OpenSourceSupport)
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" style="zoom:25%;" />](https://jb.gg/OpenSourceSupport)
+
