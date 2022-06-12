@@ -8,7 +8,7 @@ type Int interface {
     ~int | ~uint
 }
 
-func max[T Int](vals ...T) T {
+func Tmax[T Int](vals ...T) T {
     maxv := T(math.Inf(-1))
     for _, v := range vals {
         if v > maxv {
@@ -18,20 +18,24 @@ func max[T Int](vals ...T) T {
     return maxv
 }
 
-func MaxFromNumbers[T Int](vals ...T) T {
-    return max(vals...)
+func Tmin[T Int](vals ...T) T {
+    minv := Tmax(vals...)
+    for _, v := range vals {
+        if v < minv {
+            minv = v
+        }
+    }
+    return minv
 }
 
-func Max[T Int](a, b T) T {
-    if a > b {
-        return a
+func Tabs[T Int](vals ...T) []T {
+    t := []T{}
+    for _, v := range vals {
+        if v < 0 {
+            t = append(t, -v)
+            continue
+        }
+        t = append(t, v)
     }
-    return b
-}
-
-func Abs[T Int](a T) T {
-    if a > 0 {
-        return a
-    }
-    return -a
+    return t
 }
