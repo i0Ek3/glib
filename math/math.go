@@ -8,7 +8,7 @@ type Int interface {
     ~int | ~uint
 }
 
-func Tmax[T Int](vals ...T) T {
+func Tmax[T Int](vals []T) T {
     maxv := T(math.Inf(-1))
     for _, v := range vals {
         if v > maxv {
@@ -18,8 +18,8 @@ func Tmax[T Int](vals ...T) T {
     return maxv
 }
 
-func Tmin[T Int](vals ...T) T {
-    minv := Tmax(vals...)
+func Tmin[T Int](vals []T) T {
+    minv := Tmax(vals)
     for _, v := range vals {
         if v < minv {
             minv = v
@@ -28,7 +28,7 @@ func Tmin[T Int](vals ...T) T {
     return minv
 }
 
-func Tabs[T Int](vals ...T) []T {
+func Tabs[T Int](vals []T) []T {
     t := []T{}
     for _, v := range vals {
         if v < 0 {
