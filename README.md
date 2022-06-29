@@ -86,6 +86,4 @@ For support, email i0Ek3@protonmail.ch.
 
 ## Credit
 
-`glib` had been being developed with GoLand under the free JetBrains Open Source license(s) granted by JetBrains s.r.o., hence I would like to express my thanks here.
-
 ![](https://raw.githubusercontent.com/panjf2000/illustrations/master/jetbrains/jetbrains-variant-4.png)
