@@ -1,4 +1,3 @@
-
 # glib
 
 `glib` is a series of small libraries written in Golang, designed to help developers focus their development work on more noteworthy areas. You can use the libraries in glib to help you develop faster in your projects, welcome to try.
@@ -65,6 +64,8 @@ func main() {
     l.LockByToken(token)
     l.LockByToken(token)
     l.UnlockByToken(token)
+
+    // more...
 }
 ```
 
@@ -85,5 +86,6 @@ For support, email i0Ek3@protonmail.ch.
 
 ## Credit
 
-[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" style="zoom:25%;" />](https://jb.gg/OpenSourceSupport)
+`glib` had been being developed with GoLand under the free JetBrains Open Source license(s) granted by JetBrains s.r.o., hence I would like to express my thanks here.
 
+![](https://raw.githubusercontent.com/panjf2000/illustrations/master/jetbrains/jetbrains-variant-4.png)
