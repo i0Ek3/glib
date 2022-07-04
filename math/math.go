@@ -39,3 +39,11 @@ func Tabs[T Int](vals []T) []T {
     }
     return t
 }
+
+// Ttrop equals if ok ? a : b
+func Ttrop[T Int](ok bool, a, b T) T {
+	if ok {
+	    return a
+	}
+    return b
+}

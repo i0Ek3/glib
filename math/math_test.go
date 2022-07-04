@@ -145,8 +145,46 @@ func FuzzTabs(f *testing.F) {
 	})
 }
 
+func TestTtrop(t *testing.T) {
+    testcases = []struct{
+        ok   bool
+        a    int
+        b    int
+    }{
+        {true, 0, 1},
+        {false, 0, 1},
+        {true, 0, -1},
+    }
+    for i, tt := range testcases {
+        want := []int{0, 1, 0}
+        if got := Ttrop(tt.ok, tt.a, tt.b); got != want[i] {
+            t.Errorf("Ttrop() = %v, want %v", got, want[i])
+        }
+    }
+}
+
+func FuzzTtrop(f *testing.F) {
+    f.Fuzz(func(t *testing.T, _ int) {
+        for i, tc := range testcases {
+            want := []int{0, 1, 0}
+            if got := Ttrop(tc.ok, tc.a, tc.b); got != want[i] {
+                t.Errorf("Ttrop() = %v, want %v", got, want[i])
+            }
+        }
+    })
+}
+
 var (
 	tests = [][]int{[]int{1, 2, 3, 5}, []int{0, 0, 0}, []int{-1, 0, 1}, []int{-1, -2, -3}}
+    testcases = []struct{
+        ok bool
+        a  int
+        b  int
+    }{
+        {true, 0, 1},
+        {false, 0, 1},
+        {true, 0, -1},
+    }
 )
 
 func BenchmarkTmax(b *testing.B) {
@@ -171,4 +209,12 @@ func BenchmarkTabs(b *testing.B) {
 			_ = Tabs(tt)
 		}
 	}
+}
+
+func BenchmarkTtrop(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        for _, tt := range testcases {
+            _ = Ttrop(tt.ok, tt.a, tt.b)
+        }
+    }
 }
