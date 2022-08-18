@@ -5,6 +5,23 @@ import (
 	"testing"
 )
 
+func TestS2B(t *testing.T) {
+    oristr := "orignal string"
+    got := S2B(oristr)
+    want := []byte(oristr)
+
+    asrt.Equal(got, want)
+}
+
+func TestB2S(t *testing.T) {
+    for i := 'A'; i <= 'Z'; i++ {
+        oribyt := []byte{byte(i)}
+        got := B2S(oribyt)
+        want := string(oribyt)
+        asrt.Equal(got, want)
+    } 
+}
+
 func TestReverseWithInterval(t *testing.T) {
 	b := "hello"
 	got := ReverseWithInterval([]byte(b), 0, 4)
@@ -19,25 +36,6 @@ func TestReverse(t *testing.T) {
 	want := []int{5, 4, 3, 2, 1}
 
 	asrt.Equal(got, want)
-}
-
-func TestS2B(t *testing.T) {
-	str := "s2b"
-	got := S2B(str)
-	want := S2B(string(got))
-	if string(got) != string(want) {
-		t.Error("X")
-	}
-}
-
-func TestB2S(t *testing.T) {
-	str := "s2b"
-	byt := []byte(str)
-	got := B2S(byt)
-	want := string(byt)
-	if got != want {
-		t.Error("X")
-	}
 }
 
 func TestLower(t *testing.T) {

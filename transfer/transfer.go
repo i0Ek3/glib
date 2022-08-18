@@ -21,13 +21,8 @@ func Lower(c byte) byte {
 }
 
 func str2byte(s string) []byte {
-	str := (*reflect.StringHeader)(unsafe.Pointer(&s))
-	byt := reflect.SliceHeader{
-		Data: str.Data,
-		Len:  str.Len,
-		Cap:  str.Len,
-	}
-	return *(*[]byte)(unsafe.Pointer(&byt))
+	str := *(*reflect.StringHeader)(unsafe.Pointer(&s))
+	return *(*[]byte)(unsafe.Pointer(&str))
 }
 
 func S2B(s string) []byte {
