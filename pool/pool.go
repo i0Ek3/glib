@@ -1,55 +1,38 @@
 package pool
 
-/*import (
-    "fmt"
-    "time"
-)*/
-
 // Pool defines a goroutine pool, which contains
 // task channel and task number channel
 type Pool struct {
-    work chan func()
-    todo chan struct{}
+	work chan func()
+	todo chan struct{}
 }
 
-// New creates a goroutine pool with given size 
+// New creates a goroutine pool with given size
 func New(size int) *Pool {
-    return &Pool{
-        work: make(chan func()),
-        todo: make(chan struct{}, size),
-    }
+	return &Pool{
+		work: make(chan func()),
+		todo: make(chan struct{}, size),
+	}
 }
 
 // NewTask adds new task to work, if work is busy
-// then create a new goroutine to call worker and
-// run the task
+// then create a new goroutine to call worker and run the task
 func (p *Pool) NewTask(task func()) {
-    select {
-    case p.work <-task:
-    case p.todo <-struct{}{}:
-        go p.worker(task)
-    }
+	select {
+	case p.work <- task:
+	case p.todo <- struct{}{}:
+		go p.worker(task)
+	}
 }
 
 // worker runs task
 func (p *Pool) worker(task func()) {
-    defer func() {
-        <-p.todo
-    }()
+	defer func() {
+		<-p.todo
+	}()
 
-    for {
-        task()
-        task = <-p.work
-    }
+	for {
+		task()
+		task = <-p.work
+	}
 }
-
-/*func main() {
-    p := New(2)
-    for i := 0; i < 4; i++ {
-        p.NewTask(func() {
-            time.Sleep(2*time.Second)
-            fmt.Println(time.Now())
-        })
-    }
-    time.Sleep(5 * time.Second)
-}*/

@@ -13,6 +13,7 @@ func Tmax[T Int](vals []T) T {
 			maxv = v
 		}
 	}
+
 	return maxv
 }
 
@@ -23,6 +24,7 @@ func Tmin[T Int](vals []T) T {
 			minv = v
 		}
 	}
+
 	return minv
 }
 
@@ -35,6 +37,7 @@ func Tabs[T Int](vals []T) []T {
 		}
 		t = append(t, v)
 	}
+
 	return t
 }
 
@@ -43,5 +46,6 @@ func Ttrop[T any](cond bool, expr1, expr2 T) T {
 	if cond {
 		return expr1
 	}
+
 	return expr2
 }
