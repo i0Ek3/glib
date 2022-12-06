@@ -9,7 +9,7 @@ type Semaphore struct {
 }
 
 // NewSemaphore returns a sync.Locker interface
-func (s *Semaphore) NewSemaphore(capa int) sync.Locker {
+func NewSemaphore(capa int) sync.Locker {
 	if capa <= 0 {
 		capa = 1
 	}
@@ -29,7 +29,7 @@ func (s *Semaphore) Unlock() {
 	<-s.ch
 }
 
-// TryLock trys to acquire a resource
+// TryLock tries to acquire a resource
 func (s *Semaphore) TryLock() bool {
 	select {
 	case s.ch <- struct{}{}:

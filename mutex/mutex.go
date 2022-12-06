@@ -16,7 +16,7 @@ func NewMutex() *Mutex {
 	return mu
 }
 
-// Lock requires a lock by recive a value from channel
+// Lock requires a lock by receive a value from channel
 func (m *Mutex) Lock() {
 	<-m.ch
 }
@@ -26,11 +26,11 @@ func (m *Mutex) Unlock() {
 	select {
 	case m.ch <- struct{}{}:
 	default:
-		panic("Cannot unlock unlocked mutext!")
+		panic("Cannot unlock unlocked mutex!")
 	}
 }
 
-// TryLock trys to require a lock and return true else false
+// TryLock tries to require a lock and return true else false
 func (m *Mutex) TryLock() bool {
 	select {
 	case <-m.ch:
