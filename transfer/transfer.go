@@ -37,6 +37,22 @@ func B2S(b []byte) string {
 	return byte2str(b)
 }
 
+func B2R(b byte) rune {
+	return byte2rune(b)
+}
+
+func byte2rune(b byte) rune {
+	return []rune(string(b))[0]
+}
+
+func R2B(r rune) byte {
+	return rune2byte(r)
+}
+
+func rune2byte(r rune) byte {
+	return []byte(string(r))[0]
+}
+
 func ReverseWithInterval(b []byte, left, right int) string {
 	for left < right {
 		b[left], b[right] = b[right], b[left]
