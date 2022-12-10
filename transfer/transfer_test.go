@@ -64,7 +64,6 @@ func BenchmarkR2B(b *testing.B) {
 		for j := 'A'; j <= 'Z'; j++ {
 			_ = R2B(j)
 		}
-
 	}
 }
 

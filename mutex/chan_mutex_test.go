@@ -24,13 +24,22 @@ func BenchmarkLock(b *testing.B) {
 
 func TestTryLock(t *testing.T) {
 	m := NewMutex()
-	_ = m.TryLock()
+	ok := m.TryLock()
+	n := 0
+	if ok {
+		_ = n + n
+		m.Unlock()
+	}
 }
 
 func BenchmarkTryLock(b *testing.B) {
 	m := NewMutex()
 	for i := 0; i < b.N; i++ {
-		_ = m.TryLock()
+		ok := m.TryLock()
+		if ok {
+			_ = i * i
+			m.Unlock()
+		}
 	}
 }
 
