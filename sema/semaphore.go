@@ -1,15 +1,19 @@
 package sema
 
-import "sync"
+type Locker interface {
+	Lock()
+	Unlock()
+	TryLock() bool
+}
 
 // Semaphore indicates a semaphore
 type Semaphore struct {
-	sync.Locker
+	Locker
 	ch chan struct{}
 }
 
-// NewSemaphore returns a sync.Locker interface
-func NewSemaphore(capa int) sync.Locker {
+// NewSemaphore returns a Locker interface
+func NewSemaphore(capa int) Locker {
 	if capa <= 0 {
 		capa = 1
 	}
