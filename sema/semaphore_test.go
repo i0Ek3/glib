@@ -36,7 +36,15 @@ func BenchmarkTryLock(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		ok := sp.TryLock()
 		if ok {
+			_ = i * i
 			sp.Unlock()
 		}
+	}
+}
+
+func BenchmarkTryLockOnly(b *testing.B) {
+	sp := NewSemaphore(1)
+	for i := 0; i < b.N; i++ {
+		_ = sp.TryLock()
 	}
 }
